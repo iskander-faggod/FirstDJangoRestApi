@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class Car(models.Model):
-    vin = models.CharField(verbose_name='Vin', db_index=True, max_length=64)
+    vin = models.CharField(verbose_name='Vin', db_index=True, unique=True, max_length=64)
     colour = models.CharField(verbose_name='Colour', max_length=64)
     brand = models.CharField(verbose_name='Brand', max_length=64)
     CAR_TYPES = (
@@ -16,4 +16,4 @@ class Car(models.Model):
         (5, 'Sedan'),
     )
     car_type = models.IntegerField(verbose_name='Brand', choices=CAR_TYPES)
-    user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE())
+    user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE)
